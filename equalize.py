@@ -4,14 +4,15 @@ import cv2
 # import Numpy
 import numpy as np
 
+
 def run_histogram_equalization(image_path):
     rgb_img = cv2.imread(image_path)
 
-    # convert from RGB color-space to YCrCb
+    # convert from RGB color-space to HSV
     hsv_img = cv2.cvtColor(rgb_img, cv2.COLOR_BGR2HSV)
     # print(hsv_img[: , : , 2])
 
-    # equalize the histogram of the Y channel
+    # equalize the histogram of the V channel
     hsv_img[:, :, 2] = cv2.equalizeHist(hsv_img[:, :, 2])
 
     # convert back to RGB color-space from YCrCb
